@@ -16,8 +16,18 @@ nav {
   padding: 0 20px;
 }
 
+nav img {
+  max-height: 50px;
+  /* padding: 5px; */
+  margin: 5px 20px 5px 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 nav h1 {
   margin: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 nav a {
@@ -35,6 +45,5 @@ nav a:hover {
 main {
   width: 900px;
   margin: auto;
-  background: #DDDDDD;
   height: 100%;
 }

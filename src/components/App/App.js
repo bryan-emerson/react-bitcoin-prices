@@ -1,40 +1,51 @@
 import React, { Component } from 'react';
-import Search from '../Search/Search.js'
+import Currencies from '../Currencies/Currencies'
+import Home from '../Home/Home'
+import Price from '../Price/Price'
 import './App.css'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 
 class App extends Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      translation: null
+      price: null,
     }
+    this.setPrice = this.setPrice.bind(this)
   }
 
-  setTranslation (data) {
-    this.setState({
-      translation: data
-    })
+  setPrice(price) {
+    this.setState({price: price})
   }
 
   render() {
     return(
       <div>
         <nav>
-          <h1>React Translator</h1>
-          <Link to="/search">Search</Link>
+          <Link to="/">
+            <img src="https://en.bitcoin.it/w/images/en/2/29/BC_Logo_.png" alt=""/>
+            <h1>Bitcoin prices</h1>
+          </Link>
+          <Link to="/currencies">View Currencies</Link>
         </nav>
         <main>
-          <Route 
-            path="/"
-            render={() => {
-              return <Search
-                translation={ this.state.translation }
-                setTranslation={ (data) => this.setTranslation(data) }
-              />
-            }}
-          />
+          <Switch>
+            <Route 
+              path="/currencies"
+              component={Currencies}
+            />
+            <Route 
+              path="/price/:currency"
+              render={routerProps => {
+                return <Price setPrice={this.setPrice} {...routerProps} {...this.state}/>
+              }}
+            />
+            <Route
+              path="/"
+              component={Home}
+            />
+          </Switch>
         </main>
       </div>
     )

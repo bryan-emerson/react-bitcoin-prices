@@ -1,0 +1,8 @@
+.currency p {
+  font-size: 24px;
+}
+
+.currency a {
+  font-weight: bold;
+  color: green;
+}
