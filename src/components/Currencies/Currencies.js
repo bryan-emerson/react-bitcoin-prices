@@ -4,13 +4,6 @@ import listOfCurrencies from './list.json'
 import { Link } from 'react-router-dom'
 
 class Currencies extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      currencies: listOfCurrencies
-    }
-  }
-
   render() {
     let list = listOfCurrencies.map(item => {
       return (
