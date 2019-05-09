@@ -4,8 +4,6 @@ import Home from "../Home/Home"
 import Price from "../Price/Price"
 import "./App.css"
 import { Route, Link, Switch, Redirect } from "react-router-dom"
-import Price from "../Price/Price"
-import Currencies from "../Currencies/Currencies"
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +33,7 @@ class App extends Component {
         </nav>
         <main>
           <Switch>
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route
               path="/currencies"
               render={routerProps => (
