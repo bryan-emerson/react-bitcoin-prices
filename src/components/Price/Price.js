@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './Price.css'
+import React, { Component } from "react";
+import axios from "axios";
+import "./Price.css";
 
-const coindeskURL = 'https://api.coindesk.com/v1/bpi/currentprice/'
+const coindeskURL = "https://api.coindesk.com/v1/bpi/currentprice/";
 
 class Price extends Component {
-
   componentDidMount() {
     const currency = this.props.match.params.currency;
-    const url = `${coindeskURL}${currency}.json`
+    const url = `${coindeskURL}${currency}.json`;
 
-    axios.get(url)
-    .then(response => {
-      let newPrice = response.data.bpi[currency].rate;
-      this.props.setPrice(newPrice)
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    axios
+      .get(url)
+      .then(response => {
+        let newPrice = response.data.bpi[currency].rate;
+        this.props.setPrice(newPrice);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
