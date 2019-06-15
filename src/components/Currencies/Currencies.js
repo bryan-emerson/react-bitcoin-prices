@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Currencies.css";
 import listOfCurrencies from "./list.json";
+import { Link } from "react-router-dom";
 
 class Currencies extends Component {
   render() {
@@ -8,7 +9,9 @@ class Currencies extends Component {
       return (
         <div className="currency" key={item.currency}>
           <p>
-            <a href={"/price/" + item.currency}>{item.currency}</a>:{" "}
+            {/* <a href={"/price/" + item.currency}>{item.currency}</a> */}
+            <Link to={`/price/${item.currency}`}>{item.currency}</Link>
+            {": "}
             {item.country}
           </p>
         </div>

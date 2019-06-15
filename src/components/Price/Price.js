@@ -20,11 +20,16 @@ class Price extends Component {
       });
   }
 
+  goHomeViaHistory = () => {
+    this.props.history.push("/");
+  };
+
   render() {
     return (
       <div>
         <h1>Bitcoin price in {this.props.match.params.currency}</h1>
         <div className="price">{this.props.price}</div>
+        <button onClick={this.goHomeViaHistory}>{"Go Home via History"}</button>
       </div>
     );
   }
