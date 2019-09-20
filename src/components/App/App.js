@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Home from "../Home/Home";
 import Currencies from "../Currencies/Currencies";
+import Price from "../Price/Price";
 import "./App.css";
 import { Route, Link } from "react-router-dom";
 
@@ -32,8 +33,19 @@ class App extends Component {
           </Link>
         </nav>
         <main>
-          <Route path="/" component={Home} />
+          <Route path="/" exact component={Home} />
           <Route path="/currencies" component={Currencies} />
+          <Route
+            path="/price/:currency"
+            render={routerProps => (
+              <Price
+                {...routerProps}
+                {...this.state}
+                // price={this.state.price}
+                setPrice={this.setPrice}
+              />
+            )}
+          />
         </main>
       </div>
     );
