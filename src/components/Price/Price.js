@@ -7,17 +7,18 @@ const coindeskURL = "https://api.coindesk.com/v1/bpi/currentprice/";
 class Price extends Component {
   componentDidMount() {
     const currency = this.props.match.params.currency;
-    const url = `${coindeskURL}${currency}.json`;
+    const url = `${coindeskURL}${currency}.json`
+    console.log(url)
 
-    axios
-      .get(url)
+    fetch(url)
+      .then(response => response.json())
       .then(response => {
-        let newPrice = response.data.bpi[currency].rate;
-        this.props.setPrice(newPrice);
+        let newPrice = response.bpi[currency].rate;
+        this.props.setPrice(newPrice)
       })
       .catch(err => {
-        console.error(err);
-      });
+        console.error(err)
+      })
   }
 
   render() {
