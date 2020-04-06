@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./Price.css";
 
 const coindeskURL = "https://api.coindesk.com/v1/bpi/currentprice/";
