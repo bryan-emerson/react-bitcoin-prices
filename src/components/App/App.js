@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Home from "../Home/Home";
+import Currencies from "../Currencies/Currencies"
+import Price from '../Price/Price'
 import "./App.css";
+import {Route, Link} from 'react-router-dom';
+
 
 class App extends Component {
   constructor(props) {
@@ -24,9 +28,15 @@ class App extends Component {
             alt=""
           />
           <h1>Bitcoin prices</h1>
+          <Link to="/">Home</Link>
+          <Link to="/currencies">Currency List</Link>
+
         </nav>
         <main>
-          <Home />
+          <Route path='/' component={Home}/>
+          <Route path='/currencies' component={Currencies}/>
+          <Route path="/price/:currency" component={Price} />
+          {/* <Home /> */}
         </main>
       </div>
     );
